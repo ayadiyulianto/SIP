@@ -1,0 +1,13 @@
+CREATE OR REPLACE VIEW vw_pembayaran AS
+SELECT tb_penghuni_kamar.id_penghuni, tb_biodata_penghuni.nama_lengkap, tb_biodata_penghuni.npm, tb_penghuni_kamar.id_kamar, tb_penghuni_kamar.semester, tb_penghuni_kamar.keterangan, COALESCE(SUM(`jumlah_bayar`),0) AS jumlah, (tb_lantai.harga - COALESCE(SUM(`jumlah_bayar`),0)) AS sisa
+FROM `tb_pembayaran`
+RIGHT JOIN tb_penghuni_kamar ON tb_pembayaran.id_penghuni = tb_penghuni_kamar.id_penghuni
+INNER JOIN tb_biodata_penghuni ON tb_biodata_penghuni.npm = tb_penghuni_kamar.npm
+INNER JOIN tb_kamar ON tb_kamar.id_kamar = tb_penghuni_kamar.id_kamar
+INNER JOIN tb_lantai ON tb_lantai.id_lantai = tb_kamar.id_lantai
+GROUP BY tb_penghuni_kamar.id_penghuni
+ORDER BY tb_penghuni_kamar.semester DESC
+
+INSERT INTO tb_pengguna (kode) SELECT IFNULL(CONCAT('KB19',LPAD((SUBSTRING_INDEX(MAX(`kode`), 'KB19',-1) + 1), 5, '0')), 'KB1900001') AS 'kode',   FROM tb_pengguna WHERE `kode` LIKE 'KB19%' ORDER BY `kode` ASC
+
+SELECT `tb_pesanan`.*, `tb_printing`.`nama_cetak`, (tb_pesanan.upah_cetak - tb_printing.harga_modal) as untung_cetak FROM `tb_pesanan` JOIN `tb_printing` ON `tb_pesanan`.`kode_barang`=`tb_printing`.`kode` JOIN `tb_transaksi` ON `tb_pesanan`.`id_transaksi`=`tb_transaksi`.`id` WHERE YEAR("tanggal_jadi") = 2019 AND MONTH("tanggal_jadi") = 1 ORDER BY `tb_transaksi`.`tanggal_jadi` ASC

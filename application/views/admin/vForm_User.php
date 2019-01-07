@@ -14,12 +14,18 @@
                             <h5 style="color: red"><i class="fa fa-exclamation-circle"> </i><?= $error ?></h5>
                         <?php }
                       ?> 
-                      <form action="<?= base_url('adminprocess/user')?>" class="form-horizontal style-form" method="post">
+                      <form action="<?= base_url('admin/user_simpan')?>" class="form-horizontal style-form" method="post">
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label">Nama</label>
+                              <div class="col-sm-10">
+                                  <input type="text" name="nama" class="form-control" <?php if(isset($data)) echo 'value="'.$data['nama'].'"'?> placeholder="Nama" required="required">
+                              </div>
+                          </div>
                           <div class="form-group">
                               <label class="col-sm-2 control-label">Username</label>
                               <div class="col-sm-10">
-                                  <input type="text" name="username" class="form-control" value="<?= $username ?>" placeholder="Username" required="required">
-                                  <input type="hidden" name="usernamee" class="form-control" value="<?= $username ?>" required="required">
+                                  <input type="text" name="username" class="form-control" <?php if(isset($data)) echo 'value="'.$data['username'].'"'?> placeholder="Username" required="required">
+                                  <input type="hidden" name="usernamee" class="form-control" <?php if(isset($data)) echo 'value="'.$data['username'].'"'?>">
                               </div>
                           </div>
                           <div class="form-group">
@@ -27,21 +33,21 @@
                               <div class="col-sm-10">
                                   <select name="level" class="form-control" required="required">
                                     <option>Pilih...</option>
-                                    <option value="mahasiswa" <?php if($level=="mahasiswa") echo 'selected'?>>Mahasiswa</option>
-                                    <option value="admin" <?php if($level=="admin") echo 'selected'?>>Admin</option>
+                                    <option value="operator" <?php if(isset($data) AND $data['level']=="operator") echo 'selected' ?>>Operator</option>
+                                    <option value="admin" <?php if(isset($data) AND $data['level']=="admin") echo 'selected'?>>Admin</option>
                                   </select>
                               </div>
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 control-label">Password</label>
                               <div class="col-sm-10">
-                                  <input type="password" placeholder="Password" id="password" name="password" class="form-control" value="<?= $password ?>" required="required">
+                                  <input type="password" placeholder="Password" id="password" name="password" class="form-control" required="required">
                               </div>
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 control-label">Ulangi Password</label>
                               <div class="col-sm-10">
-                                  <input type="password" placeholder="Ulangi Password" onkeyup="check();" id="ulangipassword" name="ulangipassword" class="form-control" value="<?= $password ?>" required="required">
+                                  <input type="password" placeholder="Ulangi Password" onkeyup="check();" id="ulangipassword" name="ulangipassword" class="form-control" required="required">
                               </div>
                               <div class="col-lg-2"></div>
                               <label class="col-lg-10 control-label" id="message"></label>

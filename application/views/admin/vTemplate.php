@@ -1,18 +1,10 @@
-<?php
-  $username=$this->session->userdata('username');
-  $smt_aktif=$this->session->userdata('smt_aktif');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Sistem Informasi Asrama</title>
+    <title><?= web_fullname?></title>
 
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url()?>assets/img/unib.png" />
     <!-- Bootstrap core CSS -->
@@ -29,7 +21,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/backend/js/datatables/responsive.dataTables.min.css')?>"/>
     <!-- Form element-->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/backend/js/bootstrap-datepicker/bootstrap-datepicker.css')?>"/>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/backend/js/bootstrap-select/bootstrap-select.min.css')?>"/>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/backend/js/bootstrap-fileupload/bootstrap-fileupload.css')?>">
+    <script src="<?= base_url('assets/backend/js/jquery.js')?>"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -50,73 +44,13 @@
                     <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
                 </div>
               <!--logo start-->
-              <a href="<?= base_url('admin')?>" class="logo"><b>SIRAMA</b></a>
+              <a href="<?= base_url('admin')?>" class="logo"><b><?= web_appname?></b></a>
               <!--logo end-->
               
-              <!-- <div class="nav notify-row" id="top_menu">
-                  <ul class="nav top-menu">
-                      <li class="dropdown">
-                          <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                              <i class="fa fa-tasks"></i>
-                              <span class="badge bg-theme">4</span>
-                          </a>
-                          <ul class="dropdown-menu extended tasks-bar">
-                              <div class="notify-arrow notify-arrow-green"></div>
-                              <li>
-                                  <p class="green">You have 4 pending tasks</p>
-                              </li>
-                              <li>
-                                  <a href="index.html#">
-                                      <div class="task-info">
-                                          <div class="desc">DashGum Admin Panel</div>
-                                          <div class="percent">40%</div>
-                                      </div>
-                                      <div class="progress progress-striped">
-                                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                              <span class="sr-only">40% Complete (success)</span>
-                                          </div>
-                                      </div>
-                                  </a>
-                              </li>
-                              <li class="external">
-                                  <a href="#">See All Tasks</a>
-                              </li>
-                          </ul>
-                      </li>
-
-                      <li id="header_inbox_bar" class="dropdown">
-                          <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                              <i class="fa fa-envelope-o"></i>
-                              <span class="badge bg-theme">5</span>
-                          </a>
-                          <ul class="dropdown-menu extended inbox">
-                              <div class="notify-arrow notify-arrow-green"></div>
-                              <li>
-                                  <p class="green">You have 5 new messages</p>
-                              </li>
-                              <li>
-                                  <a href="index.html#">
-                                      <span class="photo"><img alt="avatar" src="<?= base_url('assets/backend/img/ui-sam.jpg')?>"></span>
-                                      <span class="subject">
-                                      <span class="from">Zac Snider</span>
-                                      <span class="time">Just now</span>
-                                      </span>
-                                      <span class="message">
-                                          Hi mate, how is everything?
-                                      </span>
-                                  </a>
-                              </li>
-                              <li>
-                                  <a href="index.html#">See all messages</a>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-              </div> -->
               
               <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                      <li><a target="_blanks" class="logout" href="<?= base_url()?>"><i class="fa fa-globe"></i> Lihat Web</a></li>
+                      <li><a target="_blanks" class="logout" href="<?= base_url()?>"><i class="fa fa-globe"></i> LIHAT WEB</a></li>
                 </ul>
               </div>
           </header>
@@ -131,62 +65,67 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
                 
-                    <p class="centered"><img src="<?= base_url('assets/img/unib.png')?>" class="img-circle" width="60"></p>
-                    <h5 class="centered"><?= $smt_aktif ?><br><br><?= $username?></h5>
+                    <p class="centered"><img src="<?= base_url('assets/img/'.$this->session->userdata('avatar'))?>" class="img-circle" width="60"></p>
+                    <h5 class="centered"><?= $this->session->userdata('nama') ?></h5>
                     <li class="mt">
                         <a href="<?= base_url('admin')?>">
                             <i class="fa fa-home"></i>
-                            <span>Dashboard</span>
+                            <span>DASHBOARD</span>
                         </a>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" >
-                            <i class="fa fa-list"></i>
-                            <span>Informasi Umum</span>
+                            <i class="fa fa-globe"></i>
+                            <span>INFORMASI WEBSITE</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="<?= base_url('admin/Umum')?>">Tentang Asrama</a></li>
-                            <li><a href="<?= base_url('admin/Info_Daftar')?>">Info Pendaftaran</a></li>
-                            <li><a href="<?= base_url('admin/Slider')?>">Slider</a></li>
-                            <li><a href="<?= base_url('admin/Fasilitas')?>">Fasilitas</a></li>
-                            <li><a href="<?= base_url('admin/Lantai')?>">Lantai & Harga</a></li>
-                            <li><a href="<?= base_url('admin/Pengurus')?>">Pengurus</a></li>
+                            <li><a href="<?= base_url('admin/umum')?>">TENTANG</a></li>
+                            <li><a href="<?= base_url('admin/slider')?>">SLIDER</a></li>
+                            <li><a href="<?= base_url('admin/email')?>">EMAIL</a></li>
                         </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;" >
-                            <i class="fa fa-users"></i>
-                            <span>Data Mahasiswa</span>
+                            <i class="fa fa-database"></i>
+                            <span>MASTER</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="<?= base_url('admin/Mahasiswa')?>">Data Mahasiswa</a></li>
-                            <li><a href="<?= base_url('admin/Penghuni')?>">Data Penghuni Kamar</a></li>
+                            <li><a href="<?= base_url('admin/offsetprinting')?>">OFFSET PRINTING</a></li>
+                            <li><a href="<?= base_url('admin/digitalprinting')?>">DIGITAL PRINTING</a></li>
+                            <li><a href="<?= base_url('admin/pelanggan')?>">PELANGGAN</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="<?= base_url('admin/Kamar')?>">
-                            <i class="fa fa-building"></i>
-                            <span>Informasi Kamar</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('admin/Pembayaran')?>">
+                    <li class="sub-menu">
+                        <a href="javascript:;" >
                             <i class="fa fa-money"></i>
-                            <span>Pembayaran</span>
+                            <span>TRANSAKSI</span>
                         </a>
-                    </li>
-                    <li class="mt">
+                        <ul class="sub">
+                            <li><a href="<?= base_url('admin/transaksi_tambah')?>">TAMBAH BARU</a></li>
+                            <li><a href="<?= base_url('admin/transaksi')?>">DATA TRANSAKSI</a></li>
+                            <li><a href="<?= base_url('admin/pesanan')?>">DATA PESANAN</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="<?= base_url('admin/Manajemen_User')?>">
+                        <a href="<?= base_url('admin/laporan')?>">
+                            <i class="fa fa-book"></i>
+                            <span>LAPORAN</span>
+                        </a>
+                    </li>
+                    <li class="mt sub-menu">
+                        <a href="javascript:;" >
                             <i class="fa fa-key"></i>
-                            <span>Manajemen Pengguna</span>
+                            <span>MANAJEMEN PENGGUNA</span>
                         </a>
+                        <ul class="sub">
+                            <li><a href="<?= base_url('admin/user')?>">DATA PENGGUNA</a></li>
+                            <li><a href="<?= base_url('admin/log')?>">LOG AKTIVITAS</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="<?= base_url('auth/logout')?>">
+                        <a href="<?= base_url('auth/logout')?>" style="background-color: #d9534f">
                             <i class="fa fa-sign-out"></i>
-                            <span>Logout</span>
+                            <span>LOGOUT</span>
                         </a>
                     </li>
                 </ul>
@@ -209,7 +148,7 @@
         <!--footer start-->
         <footer class="site">
             <div class="text-center">
-                2018. Designed by <a href="" title="manasuka" target="_blank" class="w3-hover-text-indigo">manasuka.inc</a>. Powered by <a href="https://gridgum.com/themes/dashgum-bootstrap-dashboard/" title="DashGum" target="_blank" class="w3-hover-text-indigo">alvarez.is</a>
+                &copy; SIKABER 2018. Powered by <a href="https://gridgum.com/themes/dashgum-bootstrap-dashboard/" title="DashGum" target="_blank" class="w3-hover-text-indigo">alvarez.is</a>
             </div>
             <br>
         </footer>
@@ -217,7 +156,6 @@
     </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="<?= base_url('assets/backend/js/jquery.js')?>"></script>
     <script src="<?= base_url('assets/backend/js/jquery-ui-1.9.2.custom.min.js')?>"></script>
     <script src="<?= base_url('assets/backend/js/bootstrap.min.js')?>"></script>   
     <script src="<?= base_url('assets/backend/js/jquery.dcjqaccordion.2.7.js')?>" class="include"></script>
@@ -270,14 +208,16 @@
     <!-- Form element -->
     <script src="<?= base_url('assets/backend/js/bootstrap-switch.js')?>"></script>
     <script src="<?= base_url('assets/backend/js/jquery.tagsinput.js')?>"></script>
+    <script src="<?= base_url('assets/backend/js/bootstrap-select/bootstrap-select.min.js')?>"></script>
     <script src="<?= base_url('assets/backend/js/bootstrap-datepicker/bootstrap-datepicker.js')?>"></script>
     <script src="<?= base_url('assets/backend/js/bootstrap-inputmask/bootstrap-inputmask.min.js')?>"></script>
+    <script src="<?= base_url('assets/backend/js/advanced-form-components.js')?>"></script>  
     <script src="<?= base_url('assets/backend/js/form-component.js')?>"></script>  
     <script src="<?= base_url('assets/backend/js/bootstrap-fileupload/bootstrap-fileupload.js')?>"></script> 
     <script src="<?= base_url('assets/backend/tinymce/tinymce.min.js')?>"></script>
     <script type="application/javascript">
         tinymce.init({
-          selector: 'textarea',
+          selector : "textarea:not(.noMCE)",
           plugins : 'advlist autolink link lists charmap print preview'
         });
     </script>

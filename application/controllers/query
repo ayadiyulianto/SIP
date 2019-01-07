@@ -1,9 +1,0 @@
-CREATE OR REPLACE VIEW vw_pembayaran AS
-SELECT tb_penghuni_kamar.id_penghuni, tb_biodata_penghuni.nama_lengkap, tb_biodata_penghuni.npm, tb_penghuni_kamar.id_kamar, tb_penghuni_kamar.semester, tb_penghuni_kamar.keterangan, COALESCE(SUM(`jumlah_bayar`),0) AS jumlah, (tb_lantai.harga - COALESCE(SUM(`jumlah_bayar`),0)) AS sisa
-FROM `tb_pembayaran`
-RIGHT JOIN tb_penghuni_kamar ON tb_pembayaran.id_penghuni = tb_penghuni_kamar.id_penghuni
-INNER JOIN tb_biodata_penghuni ON tb_biodata_penghuni.npm = tb_penghuni_kamar.npm
-INNER JOIN tb_kamar ON tb_kamar.id_kamar = tb_penghuni_kamar.id_kamar
-INNER JOIN tb_lantai ON tb_lantai.id_lantai = tb_kamar.id_lantai
-GROUP BY tb_penghuni_kamar.id_penghuni
-ORDER BY tb_penghuni_kamar.semester DESC

@@ -18,7 +18,7 @@
                           <thead>
                           <tr>
                               <th width="5%">No</th>
-                              <th><a class="btn btn-sm btn-info" href="<?= base_url('admin/tambah_slider')?>"><i class="fa fa-plus"> Tambah</a></th>
+                              <th><a class="btn btn-sm btn-info" href="<?= base_url('admin/slider_tambah')?>"><i class="fa fa-plus"> Tambah</a></th>
                               <th>Gambar</th>
                               <th>Keterangan</th>
                           </tr>
@@ -28,8 +28,8 @@
                           <tr>
                               <td><?= $i++?></td>
                               <td>
-                                  <a class="btn btn-sm btn-primary" href="<?= base_url('admin/edit_slider/'.$row->id)?>"><i class="fa fa-pencil"> Edit</i></a>
-                                  <a class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?');" href="<?= base_url('adminprocess/hapus_gambar/'.$row->id)?>"><i class="fa fa-trash-o"> Hapus</i></a>
+                                  <a class="btn btn-sm btn-primary" href="<?= base_url('admin/slider_edit/'.$row->id)?>"><i class="fa fa-pencil"> Edit</i></a>
+                                  <a class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?');" href="<?= base_url('admin/gambar_hapus/'.$row->id)?>"><i class="fa fa-trash-o"> Hapus</i></a>
                               </td>
                               <td>
                                 <div class="project-wrapper" style="width: 100px;">

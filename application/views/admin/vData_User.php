@@ -16,23 +16,23 @@
                               <thead>
                               <tr>
                                   <th width="5%">No</th>
+                                  <th width="15%"><a class="btn btn-sm btn-info" href="<?= base_url('admin/user_tambah')?>"><i class="fa fa-plus"> Tambah Pengguna</i></a></th>
                                   <th>Username</th>
                                   <th>Level</th>
-                                  <th>Password</th>
-                                  <th width="15%"><a class="btn btn-sm btn-info" href="<?= base_url('admin/tambah_user')?>"><i class="fa fa-plus"> Tambah Pengguna</i></a></th>
+                                  <th>Nama</th>
                               </tr>
                               </thead>
                               <tbody>
                                 <?php $i=1; foreach($user->result() as $row){?>
                               <tr>
                                   <td><?= $i++?></td>
+                                  <td>
+                                      <a class="btn btn-sm btn-primary" href="<?= base_url('admin/user_ubah/'.$row->username)?>"><i class="fa fa-pencil "> Edit</i></a>
+                                      <a class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?');" href="<?= base_url('admin/user_hapus/'.$row->username)?>"><i class="fa fa-trash-o "> Hapus</i></a>
+                                  </td>
                                   <td><?= $row->username?></td>
                                   <td><?= $row->level?></td>
-                                  <td><?= $row->password?></td>
-                                  <td>
-                                      <a class="btn btn-sm btn-primary" href="<?= base_url('admin/edit_user/'.$row->username)?>"><i class="fa fa-pencil "> Edit</i></a>
-                                      <a class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus?');" href="<?= base_url('adminprocess/hapus_user/'.$row->username)?>"><i class="fa fa-trash-o "> Hapus</i></a>
-                                  </td>
+                                  <td><?= $row->nama?></td>
                               </tr>
                               <?php }?>
                               </tbody>

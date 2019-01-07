@@ -4,7 +4,7 @@
             <div class="row mt">
               <div class="col-lg-12">
                   <div class="form-panel">
-                      <form action="<?= base_url('adminProcess/gambar')?>" class="form-horizontal style-form" method="post" enctype="multipart/form-data">
+                      <form action="<?= base_url('admin/gambar_simpan')?>" class="form-horizontal style-form" method="post" enctype="multipart/form-data">
                           <h3><i class="fa fa-angle-right"></i> <?= $title?></h3>
                           <hr>
                           <?php
@@ -15,7 +15,7 @@
                             <?php } elseif(!empty($error)) { ?>
                                 <h5 style="color: red"><i class="fa fa-exclamation-circle"> </i><?= $error ?></h5>
                             <?php } ?>
-                          <input type="hidden" name="id" value="<?= $id ?>">
+                          <input type="hidden" name="id" <?php if(isset($data)) echo 'value="'.$data['id'].'"'?>>
                           <input type="hidden" name="jenis" value="<?= $jenis ?>">
                           <div class="form-group">
                               <label class="col-sm-2 control-label">Gambar</label>
@@ -29,21 +29,22 @@
                                           <span class="btn btn-theme02 btn-file">
                                             <span class="fileupload-new"><i class="fa fa-paperclip"></i> Pilih gambar</span>
                                             <span class="fileupload-exists"><i class="fa fa-undo"></i> Ganti</span>
-                                            <input type="file" name="gambar" class="default" <?php if($gambar==""){ echo 'required="required"'; } ?>>
+                                            <input type="file" name="gambar" class="default" <?php if(isset($data)){ if($data['gambar']==""){ echo 'required="required"'; }} ?>>
                                           </span>
                                       </div>
                                   </div>
                               </div>
-                              <?php if($gambar!=""){ ?>
-                              <div class="col-sm-3">
-                                  <img src="<?= base_url()?>assets/img/<?= $gambar ?>" style="width: auto; height: 150px;">
-                              </div>
-                              <?php }?>
+                              <?php if(isset($data)){
+                                if($data['gambar']!=""){ ?>
+                                  <div class="col-sm-3">
+                                      <img src="<?= base_url()?>assets/img/<?= $data['gambar'] ?>" style="width: auto; height: 150px;">
+                                  </div>
+                              <?php }} ?>
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 control-label">Keterangan</label>
                               <div class="col-sm-10">
-                                  <input type="text" name="keterangan" class="form-control" value="<?= $keterangan ?>" placeholder="Keterangan" required="required">
+                                  <textarea name="keterangan" class="form-control"><?php if(isset($data)) echo $data['keterangan']?></textarea>
                               </div>
                           </div>
                           <div class="form-group">
