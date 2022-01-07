@@ -182,83 +182,82 @@ body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>&copy; KABER 2019 - Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <p>&copy; KABER 2022 - Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
-
 
 <script>
 
-// Slideshow
-var slideIndex = 1;
-showDivs(slideIndex);
+  // Slideshow
+  var slideIndex = 1;
+  showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
   }
-  x[slideIndex-1].style.display = "block";  
-}
 
-var mySidebar = document.getElementById("mySidebar");
-
-// Toggle between showing and hiding the sidebar when clicking the menu icon
-function w3_open() {
-    if (mySidebar.style.display === 'block') {
-        mySidebar.style.display = 'none';
-    } else {
-        mySidebar.style.display = 'block';
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
     }
-}
+    x[slideIndex-1].style.display = "block";  
+  }
 
-// Close the sidebar with the close button
-function w3_close() {
-    mySidebar.style.display = "none";
-}
+  var mySidebar = document.getElementById("mySidebar");
 
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
+  // Toggle between showing and hiding the sidebar when clicking the menu icon
+  function w3_open() {
+      if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+      } else {
+          mySidebar.style.display = 'block';
+      }
+  }
 
-function myMap()
-{
-  myCenter=new google.maps.LatLng(<?= $umum->map_latitude?>, <?= $umum->map_longitude?>);
-  var mapOptions= {
-    center:myCenter,
-    zoom:15, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = "none";
+  }
 
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
-}
+  // Modal Image Gallery
+  function onClick(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+    var captionText = document.getElementById("caption");
+    captionText.innerHTML = element.alt;
+  }
+
+  function myMap()
+  {
+    myCenter=new google.maps.LatLng(<?= $umum->map_latitude?>, <?= $umum->map_longitude?>);
+    var mapOptions= {
+      center:myCenter,
+      zoom:15, scrollwheel: false, draggable: false,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
+
+    var marker = new google.maps.Marker({
+      position: myCenter,
+    });
+    marker.setMap(map);
+  }
 
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLtVi0H4w9mVTJbrShUo8P0AIsIRzOZ6c&callback=myMap"></script>
 
 <script src="<?= base_url('assets/backend/js/jquery.js')?>"></script>
+
 <script type="text/javascript">
   $(function(){
 
     $(document).ready(function(){
       loadProduk('populer');
     });
-
 
     $('#populer').click(function(event){
       event.preventDefault();
@@ -291,10 +290,6 @@ function myMap()
 
     });
   </script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 </body>
 </html>

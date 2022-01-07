@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2019 at 11:30 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Jan 07, 2022 at 10:47 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -31,7 +32,7 @@ CREATE TABLE `tb_email` (
   `email` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `pesan` text NOT NULL,
-  `tanggal` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tanggal` datetime NOT NULL DEFAULT current_timestamp(),
   `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -72,7 +73,7 @@ CREATE TABLE `tb_log` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `activity` text NOT NULL,
-  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `datetime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -211,9 +212,90 @@ CREATE TABLE `tb_printing` (
 --
 
 INSERT INTO `tb_printing` (`kode`, `jenis_cetak`, `nama_cetak`, `deskripsi`, `gambar`, `harga_modal`, `harga_umum`, `harga_reseller`, `harga_agent`) VALUES
-('BR-01', 'offset', 'Brosur lipat tiga', '<p>brosur untuk promosi</p>', 'NS3FB_WP_R01_1920x1080.jpg', 500, 1000, 1500, 500),
-('KN-01', 'offset', 'Kartu Nama', '<p>Powered By Tinymce</p>', 'ilyos.png', 1000, 3000, 2500, 2000),
-('SP-01', 'digital', 'Spanduk', '<p>blah blah blah</p>', 'NS3FB_WP_R01_1920x1080.jpg', 25000, 35000, 40000, 30000);
+('04', 'offset', 'Jilid Spiral Kawat Kecil Buku', '', '', 3000, 8000, 7000, 7000),
+('BR-01', 'offset', 'Brosur lipat tiga', '<p>brosur untuk promosi</p>', '', 500, 1000, 1500, 500),
+('CK01', 'offset', 'Yasin Cover Bludru Isi Construk', '', '', 0, 0, 0, 0),
+('CK02', 'offset', 'Yasin Cover Emas Isi Construk', '', '', 0, 0, 0, 0),
+('CK03', 'offset', 'Yasin Cover hardcover Isi Construk', '', '', 0, 0, 0, 0),
+('CK04', 'offset', 'Yasin Cover Semicover Isi Construk', '', '', 0, 0, 0, 0),
+('CK05', 'offset', 'Yasin Cover Softcover Isi Construk', '', '', 0, 0, 0, 0),
+('CT01', 'offset', 'Cetak Nota NCR ', '', '', 65000, 130000, 125000, 100000),
+('CT02', 'offset', 'Cetak Nota NCR 2 warna', '', '', 70000, 145000, 135000, 110000),
+('CT03', 'offset', 'Cetak HVS Warna', '', '', 65000, 130000, 110000, 90000),
+('CT04', 'offset', 'Cetak HVS Putih', '', '', 65000, 130000, 110000, 90000),
+('CT05', 'offset', 'Cetak Manila 1 Muka', '', '', 400, 800, 800, 800),
+('CT06', 'offset', 'Cetak Manila 2 Muka', '', '', 500, 1100, 1000, 1000),
+('CT07', 'offset', 'Cetak Manila Full Color', '', '', 800, 1500, 1500, 1500),
+('CT08', 'offset', 'Cetak Manila Full Color 2muka', '', '', 1000, 3000, 2500, 2500),
+('CT09', 'offset', 'Yasin Cover Bludru Isi Konstruk', '', '', 18000, 28000, 25000, 25000),
+('CT10', 'offset', 'Yasin Cover Bludru Isi HVS', '', '', 14000, 20000, 18000, 18000),
+('CT11', 'offset', 'Yasin Cover Emas Isi Konstruk', '', '', 16000, 25000, 23000, 23000),
+('CT12', 'offset', 'Yasin Cover Emas Isi HVS', '', '', 11000, 18000, 15000, 15000),
+('CT13', 'offset', 'Yasin Soft Cover Emas Isi HVS', '', '', 5000, 10000, 10000, 10000),
+('CT14', 'offset', 'Name Tag Magnet', '', '', 15000, 40000, 30000, 25000),
+('CT15', 'offset', 'PIN Tingkat', '', '', 5000, 12000, 9000, 9000),
+('CT16', 'offset', 'Name Tag Peniti', '', '', 10000, 35000, 30000, 20000),
+('CT17', 'offset', 'Id Card PVC', '', '', 500, 20000, 10000, 5000),
+('CT18', 'offset', 'Id Card Lengkap ', '', '', 7500, 35000, 30000, 25000),
+('CT19', 'offset', 'Undangan Sparasi per500', '', '', 1200, 1800, 1800, 1800),
+('CT20', 'offset', 'Undangan Sparasi per1000', '', '', 800, 1300, 1250, 1250),
+('CT21', 'offset', 'Undangan BW per500', '', '', 822, 1200, 1200, 1200),
+('CT22', 'offset', 'Undangan BW per1000', '', '', 632, 1000, 1000, 1000),
+('CT23', 'offset', 'AC 230 Uk. 65 x 90 cm', '', '', 2700, 3100, 3100, 3100),
+('CT24', 'offset', 'AC 230 Uk. 65 x 100 cm', '', '', 3000, 3400, 3400, 3400),
+('CT25', 'offset', 'AC 230 Uk. 79 x 109 cm', '', '', 3800, 4200, 4200, 4200),
+('CT26', 'offset', 'AC 150 Uk. 65 x 100 cm', '', '', 2000, 2400, 2400, 2400),
+('CT27', 'offset', 'AC 150 Uk. 79 x 109 cm', '', '', 2500, 2900, 2900, 2900),
+('CT28', 'offset', 'AC 120 Uk. 65 x 100 cm', '', '', 1600, 2000, 2000, 2000),
+('CT29', 'offset', 'AC 120 Uk. 79 x 109 cm', '', '', 2000, 2400, 2400, 2400),
+('JD04', 'offset', 'Jilid Spiral Kawat Kecil Buku', '', '', 3000, 8000, 7000, 7000),
+('JD05', 'offset', 'Jilid Spiral Kawat Sedang Buku', '', '', 4000, 12000, 10500, 10500),
+('JD06', 'offset', 'Jilid Spiral Kawat Besar Buku', '', '', 7000, 25000, 15000, 15000),
+('JD07', 'offset', 'Jilid Spiral Plastik Kecil', '', '', 3000, 8000, 7000, 7000),
+('JD08', 'offset', 'Jilid Spiral Plastik Sedang', '', '', 4000, 12000, 10500, 10500),
+('JD09', 'offset', 'Jilid Spiral Plastik Besar', '', '', 7000, 25000, 15000, 15000),
+('JD10', 'offset', 'Jilid Lakban Kecil', '', '', 1500, 3000, 2500, 2500),
+('JD11', 'offset', 'Jilid Lakban Sedang', '', '', 1600, 4000, 3000, 3000),
+('JD12', 'offset', 'Jilid Lakban Besar', '', '', 2000, 5000, 4000, 4000),
+('JD13', 'offset', 'Jilid Lakban Super', '', '', 4000, 10000, 8000, 8000),
+('JD14', 'offset', 'Jilid Buku Bufallo Kecil', 'Tebal 1 cm', '', 6000, 15000, 10000, 8000),
+('JD15', 'offset', 'Jilid Buku Bufallo Sedang', 'Tebal 3 cm', '', 7000, 35000, 25000, 20000),
+('JD16', 'offset', 'Jilid Buku Bufallo Besar', 'Tebal 5 cm', '', 8000, 50000, 35000, 30000),
+('JD17', 'offset', 'Jilid Buku Cover Warna Kecil', 'Tebal 1 cm', '', 8000, 20000, 15000, 10000),
+('JD18', 'offset', 'Jilid Buku Cover Warna Sedang', 'Tebal 3 cm', '', 8000, 30000, 20000, 15000),
+('JD19', 'offset', 'Jilid Buku Cover Warna Besar', 'Tebal 5 cm', '', 14000, 50000, 35000, 25000),
+('JD20', 'offset', 'Jilid Hardcover Bufallo Kecil', 'Tebal 1 cm', '', 10000, 25000, 20000, 18000),
+('JD21', 'offset', 'Jilid Hardcover Bufallo Besar', 'Tebal 5 cm', '', 15000, 50000, 35000, 30000),
+('JD22', 'offset', 'Jilid Hardcover Cover Warna Kecil', 'Tebal 1 cm', '', 10000, 25000, 20000, 18000),
+('JD23', 'offset', 'Jilid Hardcover Cover Warna Besar', 'Tebal 5 cm', '', 15000, 50000, 35000, 25000),
+('KN-01', 'offset', 'Kartu Nama', '<p>Powered By Tinymce</p>', '', 1000, 3000, 2500, 2000),
+('LM01', 'offset', 'Laminating Tebal Folio', '', '', 800, 3000, 2500, 2000),
+('LM02', 'offset', 'Laminating Tebal Kecil ', '', '', 200, 1500, 1000, 1000),
+('LM03', 'offset', 'Laminating Tipis Roll Besar 1 muka', '', '', 300, 2000, 500, 500),
+('LM04', 'offset', 'Laminating Tipis Roll Besar 2 muka', '', '', 600, 4000, 1000, 1000),
+('LM05', 'offset', 'Laminating Tipis Roll Kecil 1 muka', '', '', 500, 2000, 1500, 1500),
+('LM06', 'offset', 'Laminating Tipis Roll Kecil 2 muka', '', '', 1000, 4000, 3000, 3000),
+('PR01', 'offset', 'Print Biasa HVS Folio BW', '', '', 200, 500, 500, 500),
+('PR02', 'offset', 'Print Biasa HVS Folio Color', '', '', 500, 1000, 1000, 1000),
+('PR03', 'offset', 'Print Biasa HVS Folio Full Color', '', '', 1000, 3000, 2500, 2500),
+('PR04', 'offset', 'Print Biasa HVS A3 BW', '', '', 300, 2000, 1500, 1500),
+('PR05', 'offset', 'Print Biasa HVS A3 Color', '', '', 1000, 2500, 2000, 2000),
+('PR06', 'offset', 'Print Biasa HVS A3 Full Color', '', '', 2500, 5000, 3000, 3000),
+('PR07', 'offset', 'Laser HVS Folio BW', '', '', 100, 500, 250, 250),
+('PR08', 'offset', 'Laser  HVS Folio Color', '', '', 500, 2000, 1000, 800),
+('PR09', 'offset', 'Laser HVS A3 BW', '', '', 300, 1000, 1000, 1000),
+('PR10', 'offset', 'Fotocopy HVS', '', '', 60, 200, 200, 175),
+('PR11', 'offset', 'Fotocopy A3', '', '', 200, 500, 500, 400),
+('PR12', 'offset', 'Laser AP 150 A3+ Color 1 muka', '', '', 2300, 5000, 4000, 3000),
+('PR13', 'offset', 'Laser AP 230 A3+ Color 1 muka', '', '', 2500, 10000, 5000, 3500),
+('PR14', 'offset', 'Laser AP 150 A3+ Color 2 muka', '', '', 4300, 10000, 8000, 6000),
+('PR15', 'offset', 'Laser AP 230 A3+ Color 2 muka', '', '', 4500, 18000, 10000, 7000),
+('SP-01', 'digital', 'Spanduk', '<p>blah blah blah</p>', '', 25000, 35000, 40000, 30000),
+('ST01', 'offset', 'Stampel Komputer Kecil', '', '', 10000, 50000, 45000, 40000),
+('ST02', 'offset', 'Stampel Komputer Sedang', '', '', 15000, 80000, 70000, 60000),
+('ST03', 'offset', 'Stampel Komputer Besar', '', '', 25000, 100000, 80000, 70000),
+('ST04', 'offset', 'Stampel Kayu Sedang', '', '', 8000, 35000, 25000, 25000),
+('ST05', 'offset', 'Stampel Kayu Besar', '', '', 10000, 60000, 35000, 35000);
 
 -- --------------------------------------------------------
 
@@ -223,7 +305,7 @@ INSERT INTO `tb_printing` (`kode`, `jenis_cetak`, `nama_cetak`, `deskripsi`, `ga
 
 CREATE TABLE `tb_transaksi` (
   `id` varchar(9) NOT NULL,
-  `tanggal_terima` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tanggal_terima` datetime NOT NULL DEFAULT current_timestamp(),
   `kasir` varchar(50) DEFAULT NULL,
   `id_pelanggan` int(11) DEFAULT NULL,
   `tanggal_jadi` date NOT NULL,
@@ -345,31 +427,37 @@ ALTER TABLE `tb_umum`
 --
 ALTER TABLE `tb_email`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tb_gambar`
 --
 ALTER TABLE `tb_gambar`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `tb_log`
 --
 ALTER TABLE `tb_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `tb_pesanan_tmp`
 --
 ALTER TABLE `tb_pesanan_tmp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -400,6 +488,7 @@ ALTER TABLE `tb_pesanan_tmp`
 ALTER TABLE `tb_transaksi`
   ADD CONSTRAINT `tb_transaksi_ibfk_1` FOREIGN KEY (`kasir`) REFERENCES `tb_pengguna` (`username`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_transaksi_ibfk_2` FOREIGN KEY (`id_pelanggan`) REFERENCES `tb_pelanggan` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

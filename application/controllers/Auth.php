@@ -47,7 +47,7 @@ class Auth extends CI_Controller {
 					$this->index();
 				} else {
 					$this->session->set_flashdata('error','Username atau Password Salah');
-					$this->load->view('frontend/vlogin');
+					$this->load->view('vlogin');
 				}
 			}
 		}
